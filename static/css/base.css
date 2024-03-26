@@ -1,0 +1,338 @@
+body {
+  background-color: burlywood;
+    font-family: "Lato", sans-serif;
+  }
+  .info{
+    white-space: pre-wrap;
+  }
+  :root {
+    /*========== Colors ==========*/
+    --hue: 240;
+    --first-color: hsl(var(--hue), 16%, 18%);
+    --first-color-alt: hsl(var(--hue), 16%, 12%);
+    --title-color: hsl(var(--hue), 8%, 15%);
+    --text-color: hsl(var(--hue), 8%, 35%);
+    --body-color: hsl(var(--hue), 100%, 99%);
+    --container-color: #FFF;
+  
+    /*========== Font and typography ==========*/
+    --body-font: 'Poppins', sans-serif;
+    --big-font-size: 1.5rem;
+    --normal-font-size: .938rem;
+  
+    /*========== z index ==========*/
+    --z-modal: 1000;
+  }
+  
+  @media screen and (min-width: 968px) {
+    :root {
+      --big-font-size: 1.75rem;
+      --normal-font-size: 1rem;
+    }
+  }
+  
+  /*=============== BASE ===============*/
+ 
+  
+  button{
+    cursor: pointer;
+    border: none;
+    outline: none;
+  }
+  
+  img{
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /*=============== MODAL ===============*/  
+  .modal__button{
+    display: inline-block;
+    background-color: var(--first-color);
+    color: #FFF;
+    padding: 1rem 1.25rem;
+    border-radius: .5rem;
+    transition: .3s;
+  }
+  
+  .modal__button:hover{
+    background-color: var(--first-color-alt);
+  }
+  
+  .modal__container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: hsla(var(--hue), 18%, 75%, .8);
+    width: 100%;
+    height: 100%;
+    display: grid;
+    align-items: flex-end;
+    overflow: hidden;
+    transition: all .3s;
+    z-index: var(--z-modal);
+    visibility: hidden;
+    opacity: 0;
+  }
+  
+  .modal__content{
+    position:fixed;
+    align-items:center;
+    justify-content:center;
+    top:0px;
+    left:0px;
+    background-color: var(--container-color);
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    border-radius: 1rem 1rem 0 0;
+    transition: all .3s;  
+    transform: translateX(30%);
+  }
+  
+  .modal__img{
+    width: 150px;
+    margin-bottom: .75rem;
+  }
+  
+  .modal__close{
+    display: inline-flex;
+    background-color: var(--first-color);
+    border-radius: .25rem;
+    color: #FFF;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+  }
+  
+  .modal__title{
+    font-size: var(--big-font-size);
+    color: var(--title-color);
+    font-weight: 500;
+  }
+  
+  .modal__description{
+    margin-bottom: 1.5rem;
+  }
+  
+  .modal__button-width{
+    width: 90%;
+  }
+  
+  .modal__button-link{
+    display: block;
+    margin: 1rem auto 0;
+    background-color: transparent;
+    color: var(--first-color);
+    font-weight: 500;
+  }
+  
+  /* Show modal */
+  .show-modal{
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .show-modal .modal__content{
+    /*=== Effect 1 ===*/
+    transform: translateY(0);
+  
+    /*=== Effect 2 ===*/
+    /* transform: scale(1) translateY(0); */
+  
+    /*=== Effect 3 ===*/
+    /* transform: rotateX(0) scale(1) translateY(0); */
+  }
+  
+  /*=============== BREAKPOINTS ===============*/
+  /* For small devices */
+  @media screen and (min-width: 576px){
+    .modal__content{
+      margin: auto;
+      width: 380px;
+      border-radius: 1.25rem;
+    }
+  
+    .modal__img{
+      width: 170px;
+    }
+  }
+  
+.header-section {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	top: 0;
+	padding: 0 53px;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 999;
+}
+
+.header-section.header-bg-2 {
+	background: rgba(34, 34, 34, 0.83);
+}
+
+.header-nav {
+	text-align: left;
+	padding-top: 35px;
+}
+
+.site-logo {
+	float: left;
+	display: inline-block;
+	padding: 39px 0;
+}
+
+.main-menu {
+	display: inline-block;
+	padding-right: 30px;
+}
+
+.main-menu li {
+	display: inline-block;
+	position: relative;
+}
+
+.main-menu li a {
+	display: block;
+	font-size: 16px;
+	color: #ffffff;
+	font-family: "Lato", sans-serif;
+	padding: 0 1px 5px;
+	border-bottom: 2px solid transparent;
+	margin-right: 45px;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+}
+
+.main-menu li a:hover,
+.main-menu li a.active {
+	border-bottom: 2px solid #ff000a;
+}
+
+.main-menu li:hover>.sub-menu {
+	visibility: visible;
+	opacity: 1;
+	margin-top: 20px;
+}
+
+.main-menu .sub-menu {
+	position: absolute;
+	list-style: none;
+	width: 220px;
+	left: 0;
+	top: 100%;
+	text-align: left;
+	padding: 20px 0;
+	visibility: hidden;
+	opacity: 0;
+	margin-top: 50px;
+	background: #fff;
+	z-index: 99;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+	-webkit-box-shadow: 2px 7px 20px rgba(0, 0, 0, 0.15);
+	box-shadow: 2px 7px 20px rgba(0, 0, 0, 0.15);
+}
+
+.main-menu .sub-menu::before {
+	position: absolute;
+	content: "";
+	left: 15px;
+	top: -7px;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-bottom: 7px solid #fff;
+}
+
+.main-menu .sub-menu:after {
+	position: absolute;
+	content: "";
+	width: 100%;
+	height: 20px;
+	left: 0;
+	top: -20px;
+}
+
+.main-menu .sub-menu li {
+	display: block;
+}
+
+.main-menu .sub-menu li a {
+	display: block;
+	color: #000;
+	margin-right: 0;
+	padding: 5px 20px;
+	border-bottom: none;
+}
+
+.main-menu .sub-menu li a:hover {
+	color: #ff000a;
+}
+
+.header-right {
+	display: inline-block;
+}
+
+.header-right a {
+	color: #fff;
+	font-size: 16px;
+	font-family: "Lato", sans-serif;
+	display: inline-block;
+}
+
+.header-right .register {
+	border: 2px solid #fff;
+	min-width: 130px;
+	text-align: center;
+	padding: 8px 15px;
+	margin-left: 25px;
+}
+  
+  .main {
+    margin-left: 160px; /* То же, что и ширина боковой навигации */
+    font-size: 28px; /* Увеличенный текст для включения прокрутки */
+    padding: 0px 10px;
+  }
+  #premiya{
+    position: absolute;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+  .table {
+	width: 100%;
+	border: none;
+	margin-bottom: 20px;
+}
+.table thead th {
+	font-weight: bold;
+	text-align: left;
+	border: none;
+	padding: 10px 15px;
+	background: #d8d8d8;
+	font-size: 14px;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+}
+.table tbody td {
+	text-align: left;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	padding: 10px 15px;
+	font-size: 14px;
+	vertical-align: top;
+}
+.table thead tr th:first-child, .table tbody tr td:first-child {
+	border-left: none;
+}
+.table thead tr th:last-child, .table tbody tr td:last-child {
+	border-right: none;
+}
+.table tbody tr:nth-child(even){
+	background: #f3f3f3;
+}

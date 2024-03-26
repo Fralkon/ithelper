@@ -1,0 +1,22 @@
+{%if equipments.count > 0%}
+<thead>
+	<tr>
+		<th>branch</th>
+		<th>type</th>
+		<th>name</th>
+    	<th>ip</th>
+		<th>time_off</th>
+	</tr>
+</thead>
+<tbody>  
+   {% for equipment in equipments %}
+	<tr>
+		<td>{{equipment.branch.name}}</td>
+		<td>{{equipment.type.type}}</td>
+		<td>{{equipment.name}}</td>
+		<td>{{equipment.ip}}</td>
+		<td>{{equipment.time_off}}</td>
+	</tr>        
+   {% endfor %}
+</tbody>
+{% endif %}

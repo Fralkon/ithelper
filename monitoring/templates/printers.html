@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Принтеры{% endblock title %}
+{% block header %}Принтеры{% endblock header %}
+{% block content %}
+{% if error %}
+{{error}}
+{% elif branchs.count > 0 %}
+    <table>
+        <thead><th>Филиал</th></thead>
+        {% for branch in branchs %}
+        <tr>
+            <td><a href = "/printer/on_branch/{{branch.id}}/">{{ branch.name }}</a></td>
+        </tr>
+        {% endfor %}
+    </table>    
+{% elif printers.count > 0 %}    
+    <table class="table">
+    <thead><th>Модель</th><th>IP</th><th>Драйвер</th></thead>
+    {% for printer in printers %}
+    <tr>
+        <td>{{ printer.model }}</td>
+        <td><a href = "http://{{printer.ip}}/">{{ printer.ip }}</a></td>
+        <td><a href = "/file?name={{printer.driver}}/">Скачать драйвер</a></td>
+    </tr>
+    {% endfor %}
+</table>    
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Принтеры{% endblock title %}
+{% block header %}Принтеры{% endblock header %}
+{% block content %}
+{% if error %}
+{{error}}
+{% elif printers.count > 0 %}    
+    <table class="table">
+    <thead><th>Модель</th><th>Драйвер</th></thead>
+    {% for printer in printers %}
+    <tr>
+        <td>{{ printer.name }}</td>
+        <td><a href = "/file?name={{printer.driver}}/">Скачать драйвер</a></td>
+    </tr>
+    {% endfor %}
+</table>    
+{% endif %}
+{% endblock content %}

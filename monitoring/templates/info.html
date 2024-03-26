@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Index{% endblock title %}
+{% block header %}
+{{name_head}}
+{% endblock header %}
+
+{% block content %}
+
+{%if info_type.count > 0 %}
+    {% for info in info_type %}
+    <table class="info">
+        <a href="/info?type={{info}}">{{info}}</a>
+    </table>
+    {% endfor %}
+{% endif %}
+
+{%if info_topic.count > 0 %}
+    {% for info in info_topic %}
+    <table class="info">
+        <a href="/info/{{info.id}}">{{info.topic}}</a>
+    </table>
+    {% endfor %}
+{% endif %}
+
+{%if info%}
+    <div class="info">{{info.info}}
+    </div>
+    <div> 
+        {%if img%}
+        <img src="{%static img%}">
+        {% endif %}
+        {%if file%}
+        <a href="/file?name={{info.file}}">FILE</a> 
+        {% endif %}
+    </div>
+{% endif %}
+{% endblock content %}

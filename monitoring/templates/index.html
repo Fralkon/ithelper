@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Index{% endblock title %}
+{% block header %}Главная{% endblock header %}
+{% block content %}
+{% if branchs.count > 0 %}
+<h2>Список филиалов</h2>
+    <table>
+        <thead><th>Id</th><th>Наименование</th><th>Адресс</th><th></th></thead>
+        {% for branch in branchs %}
+        <tr>
+            <td>{{ branch.id }}</td>
+            <td>{{ branch.name }}</td>
+            <td>{{ branch.adress }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+{% endblock content %}

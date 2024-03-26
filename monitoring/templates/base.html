@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}IT Helper{% endblock title %}</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="{% static "css/styles.css" %}" >
+    <link rel="stylesheet" href="{% static "css/base.css" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap_min.css.css" %}">
+    <link rel="stylesheet" href="{% static "js/base.js" %}">
+    <script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}";
+        function LoadPremiya(){
+        var elemLeft, elemTop, maxElemLeft, maxElemTop, elem;
+        elem = document.getElementById('premiya');       
+        maxElemLeft = document.documentElement.clientWidth - elem.offsetWidth;
+        maxElemTop = document.documentElement.clientHeight - elem.offsetHeight;
+      
+        elem.onmousemove = handler;
+      
+        function handler() {
+          elemLeft = Math.random() * maxElemLeft;
+          elem.style.left = elemLeft + 'px';
+          elemTop = Math.random() * maxElemTop;
+          elem.style.top = elemTop + 'px';
+        }
+    }</script>    
+    {% block include %}{% endblock include %}
+</head>
+<body>
+  <nav class="header-nav">
+    <ul class="main-menu">
+    {% if user > 0%}
+    <!-- <li>
+      <button class="modal__button" id="open-modal">
+      Open Modal
+      </button>
+    </li>
+      <div class="modal__container" id="modal-container">
+        <div class="modal__content">
+          <div class="modal__close close-modal" title="Close">
+            <i class='bx bx-x'></i>
+          </div>
+          <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+          <h1 class="modal__title">Good Job!</h1>
+          <p class="modal__description">Click the button to close</p>
+          <button class="modal__button modal__button-width">
+            View status
+          </button>
+          <button class="modal__button-link close-modal">
+            Close
+          </button>
+        </div>
+      </div>
+     -->
+      {%else%}
+      <li>
+        <button class="modal__button" id="open-modal">
+        Авторизация
+        </button></li>
+        <div class="modal__container" id="modal-container">
+          <div class="modal__content">
+            <div class="modal__close close-modal" title="Close">
+              <i class='bx bx-x'></i>
+            </div>
+            <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+            <h1 class="modal__title">Авторизация</h1>
+            <p class="modal__description"><input type="login"></p>
+            <button class="modal__button modal__button-width" onclick = "Auth()">
+              Войти
+            </button>
+            <button class="modal__button-link close-modal">
+              Close
+            </button>
+          </div>
+        </div>
+        <script src="{% static "js/auth.js" %}"></script>
+      {% endif %}
+      <script src="{% static "js/modal.js" %}"></script></li>
+    <li><a href="/">Head</a></li>
+    <li><a href="/monitoring/">Monitoring</a></li>
+    {% if user > 0%}
+    <li><a href="/info/">Задачи</a></li>
+    <li><a href="/printer/">Принтеры</a>
+      <ul class="sub-menu">
+        <li><a href="/printer/driver/">Драйверы</a></li>
+        </ul>
+    </li>
+    {% endif %}
+    <li><a href="/info">Info</a></li>
+    {% if user > 0%}<li><a href="/setting/">Настройки</a></li>
+    <li><a href="/out/">Выйти</a></li> 
+    {% endif %}
+    </ul>
+  </nav>      
+      <div class="main">
+        <h1>{% block header %}{% endblock header %}</h1>  
+        <div id="premiya"><img src = "{% static "images/premiya.png" %}" onload = "LoadPremiya()"></div>
+        <div>{% block content%}{% endblock content %}</div>
+        <br>
+        <div>MyCorp. 2022. All rights reserved.</div>
+    </div>    
+</body>
+</html>
+<body>
